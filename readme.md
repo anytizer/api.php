@@ -24,7 +24,7 @@ If you installed in subdirectory, mark your offset path correctly.
 
 ## APIs Served
 
-Following are the valid test endpoints to this application, which connect to the database.
+Following are the valid endpoints to test this application. Results are calculated from the database server.
 
 	/
 	/age
@@ -43,6 +43,7 @@ Following are the valid test endpoints to this application, which connect to the
  * To add an API, just add a new method to the resource.
  * Independent of bulky third party libraries.
  * Separation of concerns
+ * Useful in light-weight micro-services
 
 
 ## Program Entry
@@ -50,3 +51,16 @@ Following are the valid test endpoints to this application, which connect to the
 For an API like __{resource}/{method}/data...__, the program executures like:
 
 api-v1.php => controllers/controller_{resource}/:{http_verb}_{method}($data=array())
+
+ * .htaccess always redirects to api-v1.php.
+ * It seeks for a valid controller resource
+ * It seeks for valid method in that controller
+ * Executes controller's method and outputs in JSON.
+
+
+## DIY
+
+ * Versioning: Create a whole new set of applications and update .htaccess to point new API Processor.
+ * Logging: Manage access logs yourself
+ * API Security: beyond the scope, manage yourself
+ 
