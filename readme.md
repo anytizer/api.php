@@ -1,9 +1,14 @@
-## API.PHP
+# API.PHP
 
 Minimalistic API Gateway using Apache/.htaccess url rewriting, PHP and PDO.
 
 This work is an example purpose only, as __Proof of Concept__, and may not be suitable for production.
 
+
+## Installation
+
+Upload everything in this project to root of your api gateway (subdomain).
+If you installed in subdirectory, mark your offset path correctly.
 
 ## API Structure
 
@@ -27,7 +32,7 @@ Following are the valid endpoints to this application:
 
 ## Benefits
 
- * Slim
+ * Slim, less than 10 KB
  * To add an API, just add a new method to the resource.
  * Does not depend on any third party libraries.
 

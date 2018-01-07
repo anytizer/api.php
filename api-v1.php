@@ -1,9 +1,15 @@
 <?php
-# an offset from your root path to this api
-$api_path = "/angular/libraries/api.php/"; # /
-#print_r($_SERVER);
+/**
+ * an offset from your root path to this api
+ * No need, if you installed it on the root of a subdomain.
+ */
+$offset_path = "/project/api.php/"; # fix it
+
+/**
+ * Do not edit anything below.
+ */
 $_SERVER["REDIRECT_URL"] = $_SERVER["REDIRECT_URL"]??"/";
-$path = preg_replace("/^".preg_quote($api_path, "/")."/is", "", $_SERVER["REDIRECT_URL"]);
+$path = preg_replace("/^".preg_quote($offset_path, "/")."/is", "", $_SERVER["REDIRECT_URL"]);
 $path = trim($path, "/");
 $params = explode("/", $path);
 if(empty($params[0])) $params[0] = "auto";
