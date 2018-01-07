@@ -22,11 +22,8 @@ class controller_age extends api_abstracts implements api_interface
 
 	public function get_index($data=array())
 	{
-		# Web Server's local time test
-		#return date("Y-m-d H:i:s"); // local time test
-		
 		# Database server time test
-		return $this->calculate(array(0));
+		return $this->get_today($data); // calling another API
 	}
 	
 	/**
@@ -48,7 +45,8 @@ class controller_age extends api_abstracts implements api_interface
 	 */
 	public function get_yesterday($data=array())
 	{
-		return $this->calculate(array(1));
+		$data[0] = 1;
+		return $this->calculate($data);
 	}
 
 	/**
@@ -58,7 +56,8 @@ class controller_age extends api_abstracts implements api_interface
 	 */
 	public function get_today($data=array())
 	{
-		return $this->calculate(array(0));
+		$data[0] = 0;
+		return $this->calculate($data);
 	}
 
 	/**
@@ -68,7 +67,8 @@ class controller_age extends api_abstracts implements api_interface
 	 */
 	public function get_tomorrow($data=array())
 	{
-		return $this->calculate(array(-1));
+		$data[0] = -1;
+		return $this->calculate($data);
 	}
 
 	/**
