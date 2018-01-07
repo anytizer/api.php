@@ -1,8 +1,8 @@
 # API.PHP
 
-Minimalistic API Gateway using Apache/.htaccess url rewriting, PHP and PDO.
+Minimalistic API Gateway using Apache/.htaccess url rewriting, PHP and PDO. The output is always of JSON type except in case of exceptions raised.
 
-This work is an example purpose only, as __Proof of Concept__, and may not be suitable for production.
+This is an example purpose __Proof of Concept__ work, and may not be suitable for production. However, you can expand it, add security features and use.
 
 
 ## Installation
@@ -15,9 +15,9 @@ If you installed in subdirectory, mark your offset path correctly.
 	/resource/method/[data/id,...]
 
 
-## APIs served
+## APIs Served
 
-Following are the valid endpoints to this application:
+Following are the valid test endpoints to this application, which connect to the database.
 
 	/
 	/age
