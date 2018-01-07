@@ -29,26 +29,54 @@ class controller_age extends api_abstracts implements api_interface
 		return $this->calculate(array(0));
 	}
 	
+	/**
+	 * Returns date in the past before N days
+	 * 
+	 * @see /age/old
+	 * @see /age/old/50
+	 */
 	public function get_old($data=array())
 	{
-		return $this->calculate(array(1));
+		$data[0] = (int)($data[0]??1);
+		return $this->calculate($data);
 	}	
 
+	/**
+	 * Returns yesterday's date
+	 * 
+	 * @see /age/yesterday
+	 */
 	public function get_yesterday($data=array())
 	{
 		return $this->calculate(array(1));
 	}
 
+	/**
+	 * Returns current date
+	 * 
+	 * @see /age/today
+	 */
 	public function get_today($data=array())
 	{
 		return $this->calculate(array(0));
 	}
 
+	/**
+	 * Returns tomorrow's date
+	 * 
+	 * @see /age/tomorrow
+	 */
 	public function get_tomorrow($data=array())
 	{
 		return $this->calculate(array(-1));
 	}
 
+	/**
+	 * Returns future date after N days
+	 * 
+	 * @see /age/future
+	 * @see /age/future/80
+	 */
 	public function get_future($data=array())
 	{
 		$data[0] = -(int)($data[0]??1);
