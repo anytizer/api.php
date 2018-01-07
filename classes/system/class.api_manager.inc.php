@@ -33,8 +33,9 @@ class api_manager
 	}
 	
 	/**
+	 * 
 	 * Avoid reserved word: default, using auto
-	 * Returns services\api UNDERSCORE CONTROLLER
+	 * Returns namespaced controller: controllers\controller UNDERSCORE CONTROLLER
 	 */
 	public function default_controller($controller="")
 	{

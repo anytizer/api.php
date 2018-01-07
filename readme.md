@@ -10,6 +10,13 @@ This is an example purpose __Proof of Concept__ work, and may not be suitable fo
 Upload everything in this project to root of your api gateway (subdomain).
 If you installed in subdirectory, mark your offset path correctly.
 
+
+## Configuration
+
+ * Offset path in [api-v1.php](api-v1.php)
+ * Database connections in [class.model_abstracts.inc.php](classes/abstracts/class.model_abstracts.inc.php)
+
+
 ## API Structure
 
 	/resource/method/[data/id,...]
@@ -32,9 +39,10 @@ Following are the valid test endpoints to this application, which connect to the
 
 ## Benefits
 
- * Slim, less than 10 KB
+ * Slim, less than 10 KB, including source code comments.
  * To add an API, just add a new method to the resource.
- * Does not depend on any third party libraries.
+ * Independent of bulky third party libraries.
+ * Separation of concerns
 
 
 ## Program Entry

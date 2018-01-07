@@ -13,6 +13,7 @@ abstract class model_abstracts
 		{
 			/**
 			 * Connects to the database server
+			 * This is the only configuration for your database, through out the application
 			 */
 			$this->pdo = new PDO("mysql:host=localhost;dbname=test", "root", "");
 		}
