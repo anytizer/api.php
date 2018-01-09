@@ -1,0 +1,6 @@
+{
+    "name": "anytizer/api.php",
+    "description": "Minimal API Gateway",
+    "license": "MIT",
+    "require": {}
+}

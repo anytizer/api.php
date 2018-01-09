@@ -2,13 +2,15 @@
 
 Minimalistic API Gateway using Apache/.htaccess url rewriting, PHP and PDO. The output is always of JSON type except in case of exceptions raised.
 
-This is an example purpose __Proof of Concept__ work, and may not be suitable for production. However, you can expand it, add security features and use.
+This is an example purpose __Proof of Concept__ work, and may not be suitable for production. However, you can expand it, add security features and use. This project will leave a small footprint as your API Gateway.
 
 
 ## Installation
 
 Upload everything in this project to root of your api gateway (subdomain).
 If you installed in subdirectory, mark your offset path correctly.
+
+	composer require anytizer/api.php:dev-master
 
 
 ## Configuration
@@ -19,12 +21,14 @@ If you installed in subdirectory, mark your offset path correctly.
 
 ## API Structure
 
-	/resource/method/[data/id,...]
+	/{resource}/{method}/[data/id,...]
+
+All other parameters in $_GET, $_POST, $_SERVER headers remain unchanged. They are available globally. Data found in php://input will however replace the empty $_POST. This may be useful in case your API Gateway is receiving conents from AngularJS like clients.
 
 
 ## APIs Served
 
-Following are the valid endpoints to test this application. Results are calculated from the database server.
+Following are the valid example purpose endpoints to test this application. Results are calculated from the database server.
 
 	/
 	/age
@@ -35,6 +39,8 @@ Following are the valid endpoints to test this application. Results are calculat
 	/age/tomorrow
 	/age/future
 	/age/future/40
+
+See [class.controller_age.inc.php](classes/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
 
 
 ## Benefits

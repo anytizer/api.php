@@ -1,2 +1,4 @@
 /logs/*.log
 /vhosts-dev.conf
+
+/vendor/
