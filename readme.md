@@ -41,6 +41,8 @@ Following are the valid example purpose endpoints to test this application. Resu
 	/age/future/40
 
 See [class.controller_age.inc.php](classes/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
+Any method name starting as get_, post_, put_ will serve as the `{method}` in your URL.
+Any class name inside controllers\\controller_* will serve as the `{resource}` in your URL.
 
 
 ## Benefits
