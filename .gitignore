@@ -1,4 +1,11 @@
-/logs/*.log
+/src/logs/*.log
 /vhosts-dev.conf
-
 /vendor/
+/nbproject
+/nbproject
+/.idea
+/src/.idea
+/logs/*.log
+/phpunit/cases-hosted/*.php
+/phpunit/cases-hosted
+/src/.vscode

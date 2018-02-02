@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit bootstrap="bootstrap.php" backupGlobals="false" colors="true" cacheTokens="false" processIsolation="true" verbose="true">
+    <testsuites>
+        <testsuite name="cases">
+            <directory suffix="Test.php">cases-internal</directory>
+        </testsuite>
+        <testsuite name="cases">
+            <directory suffix="Test.php">cases-hosted</directory>
+        </testsuite>
+    </testsuites>
+   <logging>
+		<log type="testdox-text" target="logs/testdox.txt" logIncompleteSkipped="true"/>
+    </logging>
+</phpunit>
