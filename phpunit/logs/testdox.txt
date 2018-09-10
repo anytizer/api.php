@@ -1,3 +1,4 @@
 cases\Date
- [ ] Date
+ [x] Today date api
+ [x] Future date api
 

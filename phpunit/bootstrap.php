@@ -26,16 +26,11 @@ if(function_exists($xdebug_disable)) {
 	$xdebug_disable();
 }
 
-// namespace/class.{name}.inc.php
-spl_autoload_register(function(string $class_name){
-	$chunks = explode("\\", $class_name);
-	$class_name = array_pop($chunks);
-	$namespace = implode("/", $chunks);
-	if(!$namespace) $namespace = ".";
+require_once("../vendor/autoload.php");
+require_once("../vendor/anytizer/relay.php/src/libraries/classes/anytizer/connections/class.relay.inc.php");
+use anytizer\includer;
+#use anytizer\connections\relay;
 
-	$file = "classes/{$namespace}/class.{$class_name}.inc.php";
-	if(is_file($file))
-	{
-		require_once($file);
-	}
-});
+#spl_autoload_register(array(new includer("../classes"), "namespaced_inc_dot"));
+
+define("APIGATEWAY", "http://api.example.com:88"); // Without trailing /

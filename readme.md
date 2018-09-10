@@ -1,47 +1,71 @@
 # API.PHP
 
-Minimalistic API Gateway using Apache, .htaccess url rewriting, PHP and MySQL PDO. General output is in JSON format.
+Minimalistic API Server Gateway using Apache, .htaccess url rewriting, PHP and PDO MySQL.
 
-This is an example purpose __Proof of Concept__ work, and may not be suitable for your production environment.
-~~However, you can expand it, add security features into it and use. Better for open APIs, but no recommendation.~~
+Output format: [JSON](http://json.org/).
 
-This project will leave a very small footprint as your server script, less than 15 KB footprint, including source code comments.
+This is an example purpose __proof of concept__ work, and may not be instantly suitable for your production environment.
+However, you can expand it, add security features into it and use.
+
+This project will leave a very small footprint as your API Server script.
+In less than 15 KB file size (including source code comments), you will get a lot of benefits.
 
 
-### Benefits
+## Benefits
 
-While being that much slim, you will get some benefits.
-
- * Handles GET/POST etc. separately.
- * To add an API, just add a new method to the resource.
- * Independent of bulky third party libraries.
- * Separation of concerns (controllers, models).
+ * Handles GET/POST/PUT/PATCH etc. separately.
+ * To add an API, just add a new method to the controller resource. Controller actions are dynamic.
+ * Free from bulky third party libraries.
+ * Separation of concerns (controllers, models, logging).
  * Useful in light-weight micro-services.
- * Uses MySQL PDO.
- * Controller actions are dynamic, just drop in a new function, and new API is ready instantly.
+ * Uses PDO MySQL.
+ * Has access logs.
+ * Has event dispatchers.
 
 
-### Function naming
+## Important Files
 
-In your controllers, write functions like: get_index() or post_index() to access /index API using GET or POST methods.
+  |- src/.htaccess
+  |- src/api-v1.php
+  |- packages
+    - system
+	  - abstracts
+	    - *.*
+	  - dispatchers
+	    - *.*
+	  - class.api_manager.inc.php
+	- [YOUR PACKAGE]
+      - models / class.model_*.inc.php
+	  - controllers / class.controller_*.inc.php
+  |- logs/
+
+ `api-v1.php` attemps to route to proper package access. The logic defined in `class.api_manager.inc.php`.
+
+
+## Controller method naming
+
+Controllers are located at: /packages/{YOURPACKAGE}/controllers/controller_{NAME}.
+The prefixes and namespaces are used **purposefully to discourage accessing PHP's default classes**  as controller names.
+
+In your controllers, write functions like: _get_index()_ or _post_index()_ to access /index API using GET or POST methods.
 Every such method receives $data=array() parameter from the remaining URL. For example, if you are accessing `/index/7/12` api using GET,
 you will write: get_index($data=array()) function, where, the value of $data will be:
 
-    array(
-    	[0] => 7
-		[1] => 12
-    );
+  array(
+    [0] => 7
+    [1] => 12
+  );
 
 and so on. In the example, 7 and 12 are your own defined numbers.
 
 
-### File naming
+## File naming
 
 PSR-4 like, but file name in the format: /name/space/class.{NAME}.inc.php.
 File `models\class.age.inc.php` to access class `new models\age()`.
 
 
-### Contents
+## Contents
 
 This script hosts barely no real API. ie. Interfacing read/write to the database is NOT done, until you exapand it.
 The calendar api calculates the dates without a need of any real MySQL Tables.
@@ -112,6 +136,8 @@ api-v1.php => controllers/controller___{resource}__/:{http_verb}___{method}__($d
 This application comes with a sample calendar age calculator that connects to MySQL Database for this purpose.
 Right after you install it correctly, the following `curl` endpoints will show date-related output.
 
+### cURL based testing
+
  * `ping api.example.com`
  * `curl api.example.com:88/calendar/age/old`
  * `curl api.example.com:88/calendar/age/old/8`
@@ -122,6 +148,13 @@ Right after you install it correctly, the following `curl` endpoints will show d
  * `curl api.example.com:88/calendar/age/future`
  * `curl api.example.com:88/calendar/age/future/50`
  * `curl api.example.com:88/calendar/age/future/-10`
+
+
+ ### PHPUnit testing
+
+ PHPUnit can be used to test this API Server.
+ It is included with the application.
+ In the command line, change directory to the phpunit. And run `phpunit` command.
 
 
 ## DIY

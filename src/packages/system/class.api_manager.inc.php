@@ -1,6 +1,8 @@
 <?php
 namespace system;
 
+use system\dispatchers\ray;
+
 /**
  * Extracts Endpoints and HTTP Headers
  * Determine methods and additional parameters from end points
@@ -26,7 +28,7 @@ class api_manager
 	}
 
 	/**
-	 * For API safety reasons
+	 * For API safety reasons, do not allow random characters
 	 */
 	private function word_only($resource="")
 	{
@@ -108,15 +110,33 @@ class api_manager
 		return $output;
 	}
 
-    /**
-     * Checks if a request to access API resource is authorised
-     * @return bool
-     */
+	/**
+	 * Checks if a request to access API resource is authorised
+	 * @return bool
+	 */
 	public function authorized(): bool
-    {
-        // verify user
-        return true;
-    }
+	{
+		// @todo Verify that user can proceed
+		return true;
+	}
+	
+
+	/**
+	 * Event dispatcher
+	 */
+	public function dispatch($dispatcher_name="\system\dispatchers\APIAccessDispatcher", $event="", $message="", $data=array())
+	{
+		$dispatcher_class = "\\system\dispatchers\\{$dispatcher_name}";
+		if(class_exists($dispatcher_class))
+		{
+			$dispatcher = new $dispatcher_class();
+			$dispatcher->dispatch($event, "", array());
+		}
+		else
+		{
+			// Dispatcher not found.
+		}
+	}
 
 	/**
 	 * Log management
@@ -125,5 +145,9 @@ class api_manager
 	{
 		$date = date("YmdH");
 		file_put_contents("logs/requests-{$date}.log", print_r($output, true), FILE_APPEND);
+
+		$ray = new ray();
+		$ray->request();
+		$ray->response();
 	}
 }

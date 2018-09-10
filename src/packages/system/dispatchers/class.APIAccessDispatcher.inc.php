@@ -18,10 +18,16 @@ class APIAccessDispatcher implements dispatcher
     {
         $datetime = date("Y-m-d H:i:s");
         
-        $user = "@todoAPI";
+        /**
+         * Who is using this API? Read from API Tokens
+         */
+        $user = "@APIUser";
         
+        /**
+         * To shorten the URLs, by its offset
+         */
         $replaces = array(
-            "/angular/libraries/awesome/awesome.licensing/server/" => "/",
+            "/api.php/src/" => "/",
         );
         /**
          * @see http://php.net/manual/en/function.array-walk.php
@@ -35,8 +41,8 @@ class APIAccessDispatcher implements dispatcher
 
         $method = $_SERVER["REQUEST_METHOD"];
 
-        file_put_contents("d:/events.log", sprintf("\r\n%-10s %-10s %-25s %-10s %-50s %s", $datetime, $user, $event, $method, $url, $message), FILE_APPEND);
-        file_put_contents("d:/events.log", "\r\n".print_r(array("get" => $_GET, "post" => $_POST), true), FILE_APPEND);
+        file_put_contents("logs/events.log", sprintf("\r\n%-10s %-10s %-25s %-10s %-50s %s", $datetime, $user, $event, $method, $url, $message), FILE_APPEND);
+        #file_put_contents("logs/events.log", "\r\n".print_r(array("get" => $_GET, "post" => $_POST), true), FILE_APPEND);
         return true;
     }
 }

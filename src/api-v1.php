@@ -1,6 +1,4 @@
 <?php
-// http://api.example.com:88/package/controller/action
-
 /**
  * an offset from your root path to this api
  * No need, if you installed it on the root of a subdomain.
@@ -63,7 +61,7 @@ $manager = new system\api_manager();
 $package = strtolower($params[0]);
 $controller = $manager->default_controller($package, $params[1]);
 $method = $manager->default_method($params[2]);
-$APIAccessDispatcher = new \system\dispatchers\APIAccessDispatcher();
+//$APIAccessDispatcher = new \system\dispatchers\APIAccessDispatcher();
 
 /**
  * Remaining will the the data only
@@ -75,21 +73,22 @@ array_shift($params); // throw out: method
 /**
  * Core calculations
  */
+$output = null;
 if($manager->authorized())
 {
-	$GLOBALS["APIAccessDispatcher"]->dispatch("authorization.successful", "", array());
-	$output = $output = $manager->output($package, $controller, $method, $params);
-	
-	$GLOBALS["APIAccessDispatcher"]->dispatch("output.generated", "", array());
+	$manager->dispatch("APIAccessDispatcher", "authorization.successful", "", array());
+	$output = $manager->output($package, $controller, $method, $params);
+	$manager->dispatch("APIAccessDispatcher", "output.generated", "", array());
 }
 else
 {
-	$GLOBALS["APIAccessDispatcher"]->dispatch("authorization.failed", "", array());
+	$manager->dispatch("APIAccessDispatcher", "authorization.failed", "", array());
 }
 /**
  * Do some access logs
  */
 $manager->log_events($package, $controller, $method, $params, $output);
+
 
 /**
  * Output
