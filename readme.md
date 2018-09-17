@@ -131,7 +131,7 @@ Any class name inside controllers\\controller_* will serve as the `{resource}` i
 
 For an API like __{resource}/{method}/data...__, the program executures like:
 
-api-v1.php => controllers/controller___{resource}__/:{http_verb}____{method}_($data=array())
+api-v1.php => controllers/controller_*{resource}*/:{http_verb}_*{method}*($data=array())
 
  * .htaccess __always__ redirects to `api-v1.php`.
  * It seeks for a valid controller resource.

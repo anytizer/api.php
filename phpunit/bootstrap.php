@@ -30,5 +30,8 @@ require_once("vendor/autoload.php");
 use anytizer\includer;
 #spl_autoload_register(array(new includer("../classes"), "namespaced_inc_dot"));
 
-#define("APIGATEWAY", "http://api.example.com:88"); // Without trailing /
-define("APIGATEWAY", "http://localhost/angular/libraries/unittesting/api.php/api.php/src"); // Without trailing /
+/**
+ * Without trailing slash /
+ */
+define("APIGATEWAY", "http://api.example.com:88");
+#define("APIGATEWAY", "http://localhost/angular/libraries/unittesting/api.php/api.php/src");

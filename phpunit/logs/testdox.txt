@@ -1,5 +1,7 @@
 cases\Today
  [x] Today date api
+ [x] Post today date api
+ [x] Post data today date api
 
 cases\Tomorrow
  [x] Future date api
