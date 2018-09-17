@@ -16,10 +16,16 @@ if($_SERVER["REQUEST_METHOD"] === "OPTIONS")
 # http://api.example.com:88
 require_once "inc.settings.php";
 
+define("__LOG_PATH__", realpath("../logs"));
+
 error_reporting(E_ALL);
+ini_set("error_log", __LOG_PATH__."/php-errors.log");
 ini_set("display_errors", 1);
+
+/**
+ * API Call needs to complete
+ */
 ignore_user_abort(true);
-ini_set("error_log", "logs/php-errors.log");
 
 /**
  * Do not edit anything below.
@@ -55,7 +61,7 @@ spl_autoload_register(function(string $class_name){
 	$namespace = implode("/", $chunks);
 	if(!$namespace) $namespace = ".";
 
-	$file = "packages/{$namespace}/class.{$class_name}.inc.php";
+	$file = "../packages/{$namespace}/class.{$class_name}.inc.php";
 	if(is_file($file))
 	{
 		require_once($file);
