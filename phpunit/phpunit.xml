@@ -9,6 +9,6 @@
         </testsuite>
     </testsuites>
 	<logging>
-		<log type="testdox-text" target="logs/testdox.txt" logIncompleteSkipped="true"/>
+		<log type="testdox-text" target="logs/testdox.txt" />
 	</logging>
 </phpunit>

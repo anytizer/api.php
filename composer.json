@@ -4,6 +4,7 @@
     "license": "MIT",
     "require": {
         "anytizer/includer.php": "dev-master",
-        "anytizer/relay.php": "dev-master"
+        "anytizer/relay.php": "dev-master",
+        "anytizer/guid.php": "dev-master"
     }
 }

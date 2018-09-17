@@ -1,6 +1,6 @@
 <?php
 /**
- * Some API gateways need specific headers
+ * Some API gateways need specific headers to be present
  */
 $_SERVER["HTTP_USER_AGENT"] = "Minimal API Unit Test";
 $_SERVER["REQUEST_URI"] = "";
@@ -26,11 +26,9 @@ if(function_exists($xdebug_disable)) {
 	$xdebug_disable();
 }
 
-require_once("../vendor/autoload.php");
-require_once("../vendor/anytizer/relay.php/src/libraries/classes/anytizer/connections/class.relay.inc.php");
+require_once("vendor/autoload.php");
 use anytizer\includer;
-#use anytizer\connections\relay;
-
 #spl_autoload_register(array(new includer("../classes"), "namespaced_inc_dot"));
 
-define("APIGATEWAY", "http://api.example.com:88"); // Without trailing /
+#define("APIGATEWAY", "http://api.example.com:88"); // Without trailing /
+define("APIGATEWAY", "http://localhost/angular/libraries/unittesting/api.php/api.php/src"); // Without trailing /

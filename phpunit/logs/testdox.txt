@@ -1,4 +1,8 @@
-cases\Date
+cases\Today
  [x] Today date api
+
+cases\Tomorrow
  [x] Future date api
+ [x] Post future date api
+ [x] Post data future date api
 

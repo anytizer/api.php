@@ -95,6 +95,36 @@ class controller_age extends api_abstracts implements api_interface
 
 		return $response;
 	}
+	
+	public function post_old($data=array())
+	{
+		$response = $this->get_old($data);
+		return $response;
+	}
+	
+	public function post_yesterday($data=array())
+	{
+		$response = $this->get_yesterday($data);
+		return $response;
+	}
+	
+	public function post_today($data=array())
+	{
+		$response = $this->get_today($data);
+		return $response;
+	}
+	
+	public function post_tomorrow($data=array())
+	{
+		$response = $this->get_tomorrow($data);
+		return $response;
+	}
+	
+	public function post_future($data=array())
+	{
+		$response = $this->get_future($data);
+		return $response;
+	}
 
 	/**
 	 * For documentation purpose only

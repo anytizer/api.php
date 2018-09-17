@@ -1,6 +1,0 @@
-{
-    "name": "anytizer/phpunit.minimal",
-    "description": "Minimal PHPUnit testing scripts",
-    "license": "MIT",
-    "require": {}
-}

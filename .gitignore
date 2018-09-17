@@ -9,3 +9,6 @@
 /phpunit/cases-hosted/*.php
 /phpunit/cases-hosted
 /src/.vscode
+/vhost.conf
+/src/packages/My*
+/src/inc.settings.php

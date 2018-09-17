@@ -8,7 +8,7 @@ This is an example purpose __proof of concept__ work, and may not be instantly s
 However, you can expand it, add security features into it and use.
 
 This project will leave a very small footprint as your API Server script.
-In less than 15 KB file size (including source code comments), you will get a lot of benefits.
+In ~15 KB file size (including source code comments), you will get a lot of benefits.
 
 
 ## Benefits
@@ -24,7 +24,7 @@ In less than 15 KB file size (including source code comments), you will get a lo
 
 
 ## Important Files
-
+```
   |- src/.htaccess
   |- src/api-v1.php
   |- packages
@@ -38,6 +38,7 @@ In less than 15 KB file size (including source code comments), you will get a lo
       - models / class.model_*.inc.php
 	  - controllers / class.controller_*.inc.php
   |- logs/
+```
 
  `api-v1.php` attemps to route to proper package access. The logic defined in `class.api_manager.inc.php`.
 
@@ -49,12 +50,14 @@ The prefixes and namespaces are used **purposefully to discourage accessing PHP'
 
 In your controllers, write functions like: _get_index()_ or _post_index()_ to access /index API using GET or POST methods.
 Every such method receives $data=array() parameter from the remaining URL. For example, if you are accessing `/index/7/12` api using GET,
-you will write: get_index($data=array()) function, where, the value of $data will be:
+you will write: get_index($data=array()) function, where, the value of __$data__ will be:
 
+```
   array(
     [0] => 7
     [1] => 12
   );
+```
 
 and so on. In the example, 7 and 12 are your own defined numbers.
 
@@ -62,7 +65,7 @@ and so on. In the example, 7 and 12 are your own defined numbers.
 ## File naming
 
 PSR-4 like, but file name in the format: /name/space/class.{NAME}.inc.php.
-File `models\class.age.inc.php` to access class `new models\age()`.
+File `models\class.age.inc.php` to access class new `models\age()`.
 
 
 ## Contents
@@ -81,18 +84,23 @@ Upload everything in this project to root of your api gateway (subdomain).
 
 ### Configuration
 
+Setting up a virtual host is an optional activity.
+
  * Download this application somewhere you can manage virtual host.
  * Set `api.example.com 127.0.0.1` in `hosts` file.
- * Set virtual host files. See `vhosts-demo.conf` for an example.
  * If you installed in subdirectory, note your offset path correctly to reach /src/.
- * Modify your API's offset path in [api-v1.php](api-v1.php).
- * Enter database connection details in [class.model_abstracts.inc.php](classes/abstracts/class.model_abstracts.inc.php).
+ * Rename `inc.settings-sample.php` to `inc.settings.php`.
+ * Edit  your API's offset path.
+ * Enter database connection details in [class.model_abstracts.inc.php](src/packages/system/abstracts/class.model_abstracts.inc.php).
+ * In hosts file, add `127.0.0.1 api.example.com`
+ * Copy [vhost-demo.conf](vhost-demo.conf) as vhost.conf and edit it.
+ * In Apache's [httpd.conf](https://httpd.apache.org/docs/2.4/configuring.html), add: `Include PATH/vhost.conf`
  * Done!
 
 
 ## API Structure
 
-    /{package}/{resource}/{method}/[data/id,...]
+    /{package}/{resource}/{method}/[{data}/{id}...]
 
 All other parameters in $_GET, $_POST, $_SERVER headers remain unchanged. They are available globally. Data found in php://input will however replace the empty $_POST. This may be useful in case your API Gateway is receiving conents from AngularJS like clients.
 
@@ -113,7 +121,7 @@ Results are calculated from the database server.
  * `/calendar/age/future/50`
  * `/calendar/age/future/-10`
 
-See [class.controller_age.inc.php](classes/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
+See [class.controller_age.inc.php](src/packages/calendar/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
 Any method name starting as get_, post_, put_ will serve as the `{method}` in your URL.
 Any class name inside controllers\\controller_* will serve as the `{resource}` in your URL.
 
@@ -123,7 +131,7 @@ Any class name inside controllers\\controller_* will serve as the `{resource}` i
 
 For an API like __{resource}/{method}/data...__, the program executures like:
 
-api-v1.php => controllers/controller___{resource}__/:{http_verb}___{method}__($data=array())
+api-v1.php => controllers/controller___{resource}__/:{http_verb}____{method}_($data=array())
 
  * .htaccess __always__ redirects to `api-v1.php`.
  * It seeks for a valid controller resource.
@@ -138,7 +146,8 @@ Right after you install it correctly, the following `curl` endpoints will show d
 
 ### cURL based testing
 
- * `ping api.example.com`
+Ping api.example.com:88 to make sure you have successfully installed the api gateway subdomain.
+
  * `curl api.example.com:88/calendar/age/old`
  * `curl api.example.com:88/calendar/age/old/8`
  * `curl api.example.com:88/calendar/age/old/-8`
@@ -168,5 +177,4 @@ Right after you install it correctly, the following `curl` endpoints will show d
 
 ## Independent APIs
 
- * Your APIs may run independent of your website.
- * In that case, create a virtual host or subdomain.
+Your APIs may run independent of your website. In that case, just create a virtual host or subdomain.

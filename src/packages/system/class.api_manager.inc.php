@@ -82,7 +82,7 @@ class api_manager
 			{
 				$output = array(
 					"success" => false,
-					"message" => "Missing http-verb method: ".$method,
+                                        "message" => "Missing http-verb method: {$method}()",
 				);
 			}
 			else
@@ -111,7 +111,7 @@ class api_manager
 	}
 
 	/**
-	 * Checks if a request to access API resource is authorised
+	 * Checks if a request to access API resource is authorized
 	 * @return bool
 	 */
 	public function authorized(): bool

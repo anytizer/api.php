@@ -1,11 +1,20 @@
 <?php
+if($_SERVER["REQUEST_METHOD"] === "OPTIONS")
+{
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Methods: GET, POST");
+	header("Access-Control-Allow-Headers: X-Protection-Token");
+	
+	die();
+}
+
 /**
- * an offset from your root path to this api
+ * an offset from your root path to this API
  * No need, if you installed it on the root of a subdomain.
  */
 # http://api.example.com:88/path/module/controller/action/data/value
 # http://api.example.com:88
-$offset_path = "/"; # fix it
+require_once "inc.settings.php";
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -23,14 +32,14 @@ if(empty($params[0])) $params[0] = "auto";
 if(empty($params[1])) $params[1] = "index";
 if(count($params)<3)
 {
-	die("/package/controller/method/data format required.");
+	die("<strong>/package/controller/method/data</strong> format required in the URL. eg. <em>/calendar/age/tomorrow<em>.");
 }
 
 /**
  * In cases of JSON posts via javascripts like AngularJS
  */
 $fi = file_get_contents("php://input");
-if(empty($_POST) && $fi)
+if(empty($_POST) && $fi!="")
 {
 	$_POST = json_decode($fi, true);
 }
@@ -58,13 +67,14 @@ spl_autoload_register(function(string $class_name){
 });
 
 $manager = new system\api_manager();
+
 $package = strtolower($params[0]);
 $controller = $manager->default_controller($package, $params[1]);
 $method = $manager->default_method($params[2]);
 //$APIAccessDispatcher = new \system\dispatchers\APIAccessDispatcher();
 
 /**
- * Remaining will the the data only
+ * Remaining will be the the data portions only
  */
 array_shift($params); // throw out: package
 array_shift($params); // throw out: controller
@@ -84,10 +94,11 @@ else
 {
 	$manager->dispatch("APIAccessDispatcher", "authorization.failed", "", array());
 }
+
 /**
  * Do some access logs
  */
-$manager->log_events($package, $controller, $method, $params, $output);
+#$manager->log_events($package, $controller, $method, $params, $output);
 
 
 /**
