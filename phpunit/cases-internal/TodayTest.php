@@ -15,6 +15,9 @@ class TodayTest extends TestCase
 		$_POST = array();
 		
 		$relay = new relay();
+                $relay->headers(array(
+                    "X-Protection-Token" => "D1EC9E10-8E1A-4DAE-9104-17131522DD63",
+                ));
 		$data = $relay->fetch($url);
 		
 		$dates = json_decode($data, true);
@@ -34,6 +37,9 @@ class TodayTest extends TestCase
 		
 		$relay = new relay();
                 $relay->force_post();
+                $relay->headers(array(
+                    "X-Protection-Token" => "D1EC9E10-8E1A-4DAE-9104-17131522DD63",
+                ));
 		$data = $relay->fetch($url);
 		
 		$dates = json_decode($data, true);
@@ -54,6 +60,9 @@ class TodayTest extends TestCase
                 );
 		
 		$relay = new relay();
+                $relay->headers(array(
+                    "X-Protection-Token" => "D1EC9E10-8E1A-4DAE-9104-17131522DD63",
+                ));
 		$data = $relay->fetch($url);
 		
 		$dates = json_decode($data, true);

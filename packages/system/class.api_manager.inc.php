@@ -111,17 +111,19 @@ class api_manager
 	}
 
 	/**
-	 * Checks if a request to access API resource is authorized
+	 * Checks if a request to access API resource is pre-authorized
+         * Validates X-Protection-Token header
+         * @todo Verify that user can proceed based on the token key
 	 * @return bool
 	 */
 	public function authorized(): bool
 	{
-		// @todo Verify that user can proceed
-		return true;
+            $valid = array_key_exists("HTTP_X_PROTECTION_TOKEN", $_SERVER);
+            return $valid;
 	}
-	
 
-	/**
+        
+        /**
 	 * Event dispatcher
 	 */
 	public function dispatch($dispatcher_name="\system\dispatchers\APIAccessDispatcher", $event="", $message="", $data=array())
