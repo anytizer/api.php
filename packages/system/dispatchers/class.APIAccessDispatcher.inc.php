@@ -41,7 +41,7 @@ class APIAccessDispatcher implements dispatcher
 
         $method = $_SERVER["REQUEST_METHOD"];
 
-        file_put_contents("logs/events.log", sprintf("\r\n%-10s %-10s %-25s %-10s %-50s %s", $datetime, $user, $event, $method, $url, $message), FILE_APPEND);
+        file_put_contents(__LOG_PATH__."/api-events.log", sprintf("\r\n%-10s %-10s %-25s %-10s %-50s %s", $datetime, $user, $event, $method, $url, $message), FILE_APPEND);
         #file_put_contents("logs/events.log", "\r\n".print_r(array("get" => $_GET, "post" => $_POST), true), FILE_APPEND);
         return true;
     }
