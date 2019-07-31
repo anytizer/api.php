@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Include trailing slash
  */

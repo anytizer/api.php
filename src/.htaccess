@@ -1,4 +1,9 @@
+# Compulsory: mod_rewrite.c is enabled
+
 Options -Indexes
 
 RewriteEngine On
 RewriteRule ^ api-v1.php [QSA,L]
+
+#<IfModule mod_rewrite.c>
+#</IfModule>

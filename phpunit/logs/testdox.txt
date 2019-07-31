@@ -1,3 +1,6 @@
+cases\Auto
+ [ ] Auto get
+
 cases\Today
  [x] Today date api
  [x] Post today date api

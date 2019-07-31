@@ -7,3 +7,7 @@ Generate more logs
 Include tokens
 	bearer token
 	x protection token
+
+Relocate logs/*.log (out of src/)
+	mkdir logs
+	touch logs/api-events.log
