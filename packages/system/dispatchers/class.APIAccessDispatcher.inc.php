@@ -7,7 +7,8 @@ namespace system\dispatchers;
  * Class APIAccessDispatcher
  * @package system\dispatchers
  */
-class APIAccessDispatcher implements dispatcher {
+class APIAccessDispatcher implements dispatcher
+{
 
     /**
      * @param string $event
@@ -15,7 +16,8 @@ class APIAccessDispatcher implements dispatcher {
      * @param array $data
      * @return bool
      */
-    public function dispatch(string $event = "something.happened", string $message = "", array $data = array()): bool {
+    public function dispatch(string $event = "something.happened", string $message = "", array $data = array()): bool
+    {
         $datetime = date("Y-m-d H:i:s");
 
         /**
@@ -33,7 +35,7 @@ class APIAccessDispatcher implements dispatcher {
          * @see http://php.net/manual/en/function.array-walk.php
          */
         $finds = array_keys($replaces);
-        array_walk($finds, function(&$item) {
+        array_walk($finds, function (&$item) {
             $data = "/^" . preg_quote($item, "/") . "/is";
             $item = $data;
         });

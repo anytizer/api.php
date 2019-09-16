@@ -2,7 +2,8 @@
 
 namespace system\abstracts;
 
-interface api_interface {
+interface api_interface
+{
 
     function get_index($data = array());
 

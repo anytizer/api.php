@@ -2,12 +2,14 @@
 
 namespace cases;
 
-use PHPUnit\Framework\TestCase;
 use anytizer\relay;
+use PHPUnit\Framework\TestCase;
 
-class TodayTest extends TestCase {
+class TodayTest extends TestCase
+{
 
-    public function testTodayDateApi() {
+    public function testTodayDateApi()
+    {
         // curl http://api.example.com:88/calendar/age/today
         $url = APIGATEWAY . "/calendar/age/today";
 
@@ -27,7 +29,8 @@ class TodayTest extends TestCase {
         $this->assertEquals($remote, $local);
     }
 
-    public function testPostTodayDateApi() {
+    public function testPostTodayDateApi()
+    {
         // curl http://api.example.com:88/calendar/age/today
         $url = APIGATEWAY . "/calendar/age/today";
 
@@ -48,7 +51,8 @@ class TodayTest extends TestCase {
         $this->assertEquals($remote, $local);
     }
 
-    public function testPostDataTodayDateApi() {
+    public function testPostDataTodayDateApi()
+    {
         // curl http://api.example.com:88/calendar/age/today
         $url = APIGATEWAY . "/calendar/age/today";
 

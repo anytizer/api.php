@@ -2,12 +2,14 @@
 
 namespace system\abstracts;
 
-abstract class api_abstracts {
+abstract class api_abstracts
+{
 
     /**
      * Failback method
      */
-    public function get_index($data = array()) {
+    public function get_index($data = array())
+    {
         //
     }
 

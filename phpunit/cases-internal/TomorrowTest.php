@@ -2,14 +2,16 @@
 
 namespace cases;
 
-use PHPUnit\Framework\TestCase;
 use anytizer\relay;
-use \DateTime;
-use \DateInterval;
+use DateInterval;
+use DateTime;
+use PHPUnit\Framework\TestCase;
 
-class TomorrowTest extends TestCase {
+class TomorrowTest extends TestCase
+{
 
-    public function testFutureDateApi() {
+    public function testFutureDateApi()
+    {
         $date = new DateTime(date("Y-m-d"));
         $date->add(new DateInterval('P1D'));
         $tomorrow = $date->format('Y-m-d');
@@ -36,7 +38,8 @@ class TomorrowTest extends TestCase {
         $this->assertEquals($remote, $tomorrow);
     }
 
-    public function testPostFutureDateApi() {
+    public function testPostFutureDateApi()
+    {
         $date = new DateTime(date("Y-m-d"));
         $date->add(new DateInterval('P1D'));
         $tomorrow = $date->format('Y-m-d');
@@ -64,7 +67,8 @@ class TomorrowTest extends TestCase {
         $this->assertEquals($remote, $tomorrow);
     }
 
-    public function testPostDataFutureDateApi() {
+    public function testPostDataFutureDateApi()
+    {
         $date = new DateTime(date("Y-m-d"));
         #$date->setTimezone(new DateTimeZone("Europe/London"));
         $date->add(new DateInterval("P1D"));

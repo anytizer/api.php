@@ -13,6 +13,8 @@ if (isset($_SERVER["REQUEST_METHOD"])) {
     }
 }
 
+require_once "../vendor/autoload.php";
+
 /**
  * For removing an offset from your root path to this API
  * No need, if you installed it on the root of a subdomain.
@@ -65,7 +67,7 @@ if (empty($_POST) && $fi != "") {
  * Includes class files automatically
  * File name pattern: classes/{sub}/{name}/{space}/class.{class_name}.inc.php
  */
-spl_autoload_register(function(string $class_name) {
+spl_autoload_register(function (string $class_name) {
     // for name-space based class access
     $chunks = explode("\\", $class_name);
     $class_name = array_pop($chunks); // from the last word
@@ -78,11 +80,9 @@ spl_autoload_register(function(string $class_name) {
     $hosted_file = "../hosted/{$namespace}/class.{$class_name}.inc.php";
     if (is_file($package_file)) {
         require_once $package_file;
-    }
-    else if (is_file($hosted_file)) {
+    } else if (is_file($hosted_file)) {
         require_once $hosted_file;
-    }
-    else {
+    } else {
         #echo "\r\nNot found: {$file}";
     }
 });
@@ -107,7 +107,7 @@ array_shift($params); // throw out: method
 $output = null;
 if ($manager->authorized()) {
     $manager->dispatch("APIAccessDispatcher", "authorization.successful", "", array());
-    $output = $manager->output($package, $controller, $method, $params);
+    $output = $manager->output($package, strtolower($controller), $method, $params);
     $manager->dispatch("APIAccessDispatcher", "output.generated", "", array());
 } else {
     $manager->dispatch("APIAccessDispatcher", "authorization.failed", "", array());

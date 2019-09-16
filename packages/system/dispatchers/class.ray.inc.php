@@ -4,15 +4,18 @@ namespace system\dispatchers;
 
 use anytizer\guid;
 
-class ray {
+class ray
+{
 
     private $ray_id;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->ray_id = (new guid())->NewGuid();
     }
 
-    public function request() {
+    public function request()
+    {
         /*
           $_GET,
           $_POST,
@@ -22,7 +25,8 @@ class ray {
           $_SESSION; */
     }
 
-    public function response($output, $code) {
+    public function response($output, $code)
+    {
         // update ray
     }
 

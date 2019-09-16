@@ -1,10 +1,10 @@
 {
-    "name": "anytizer/api.php",
-    "description": "Minimal API Gateway",
-    "license": "MIT",
-    "require": {
-        "anytizer/includer.php": "dev-master",
-        "anytizer/relay.php": "dev-master",
-        "anytizer/guid.php": "dev-master"
-    }
+  "name": "anytizer/api.php",
+  "description": "Minimal API Gateway",
+  "license": "MIT",
+  "require": {
+    "anytizer/includer.php": "dev-master",
+    "anytizer/relay.php": "dev-master",
+    "anytizer/guid.php": "dev-master"
+  }
 }

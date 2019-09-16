@@ -2,12 +2,14 @@
 
 namespace cases;
 
-use PHPUnit\Framework\TestCase;
 use anytizer\relay;
+use PHPUnit\Framework\TestCase;
 
-class AutoTest extends TestCase {
+class AutoTest extends TestCase
+{
 
-    public function testAutoGet() {
+    public function testAutoGet()
+    {
         // http://localhost/tutor/api.php/src/
         // http://localhost/tutor/api.php/src/auto
         // http://localhost/tutor/api.php/src/auto/auto
