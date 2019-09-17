@@ -5,6 +5,9 @@
   "require": {
     "anytizer/includer.php": "dev-master",
     "anytizer/relay.php": "dev-master",
-    "anytizer/guid.php": "dev-master"
+    "anytizer/guid.php": "dev-master",
+    "illuminate/database": "^6.0",
+    "illuminate/events": "^6.0",
+    "anytizer/anytizer.php": "dev-master"
   }
 }
