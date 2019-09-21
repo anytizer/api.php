@@ -8,6 +8,7 @@
     "anytizer/guid.php": "dev-master",
     "illuminate/database": "^6.0",
     "illuminate/events": "^6.0",
-    "anytizer/anytizer.php": "dev-master"
+    "anytizer/anytizer.php": "dev-master",
+    "ext-pdo": "*"
   }
 }
