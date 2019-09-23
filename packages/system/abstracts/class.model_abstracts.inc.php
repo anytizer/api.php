@@ -7,7 +7,6 @@ use PDO;
 
 abstract class model_abstracts
 {
-
     protected $pdo;
 
     public function __construct()
@@ -16,6 +15,7 @@ abstract class model_abstracts
             /**
              * Connects to the database server
              * This is the only configuration for your database, through out the entire application
+             *
              */
             $options = array(
                 PDO::ATTR_PERSISTENT => false,
@@ -40,6 +40,8 @@ abstract class model_abstracts
      */
     protected function single($sql = "", $parameters = []): array
     {
+        $this->_log_sql($sql, $parameters );
+
         $statement = $this->pdo->prepare($sql);
         $success = $statement->execute($parameters);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
@@ -49,12 +51,16 @@ abstract class model_abstracts
     /**
      * Queries that should return a list of rows.
      *
+     * Array of arrays.
+     *
      * @param string $sql
      * @param array $parameters
      * @return array
      */
     protected function rows($sql = "", $parameters = []): array
     {
+        $this->_log_sql($sql, $parameters );
+
         $statement = $this->pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $success = $statement->execute($parameters);
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -70,8 +76,23 @@ abstract class model_abstracts
      */
     protected function query($sql = "", $parameters = []): bool
     {
+        $this->_log_sql($sql, $parameters);
+
         $statement = $this->pdo->prepare($sql);
         $success = $statement->execute($parameters);
         return $success;
+    }
+
+    /**
+     * Keep an eye on SQLs
+     * @param string $sql
+     * @param array $parameters
+     */
+    private function _log_sql($sql="", $parameters=[]): void
+    {
+        $log_file = "/tmp/sql.log";
+
+        file_put_contents($log_file, $sql, FILE_APPEND);
+        file_put_contents($log_file, print_r($parameters, true), FILE_APPEND);
     }
 }

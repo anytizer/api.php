@@ -11,4 +11,6 @@ interface api_interface
     // function get_xxx($params=array());
     // function post_xxx($params=array());
     // function put_xxx($params=array());
+
+    function APIUser(): APIUser;
 }
