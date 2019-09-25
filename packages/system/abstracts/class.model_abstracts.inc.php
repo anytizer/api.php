@@ -40,12 +40,25 @@ abstract class model_abstracts
      */
     protected function single($sql = "", $parameters = []): array
     {
-        $this->_log_sql($sql, $parameters );
+        $this->_log_sql($sql, $parameters);
 
         $statement = $this->pdo->prepare($sql);
         $success = $statement->execute($parameters);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
+    }
+
+    /**
+     * Keep an eye on SQLs
+     * @param string $sql
+     * @param array $parameters
+     */
+    private function _log_sql($sql = "", $parameters = []): void
+    {
+        $log_file = "/tmp/sql.log";
+
+        file_put_contents($log_file, $sql, FILE_APPEND);
+        file_put_contents($log_file, print_r($parameters, true), FILE_APPEND);
     }
 
     /**
@@ -59,7 +72,7 @@ abstract class model_abstracts
      */
     protected function rows($sql = "", $parameters = []): array
     {
-        $this->_log_sql($sql, $parameters );
+        $this->_log_sql($sql, $parameters);
 
         $statement = $this->pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $success = $statement->execute($parameters);
@@ -81,18 +94,5 @@ abstract class model_abstracts
         $statement = $this->pdo->prepare($sql);
         $success = $statement->execute($parameters);
         return $success;
-    }
-
-    /**
-     * Keep an eye on SQLs
-     * @param string $sql
-     * @param array $parameters
-     */
-    private function _log_sql($sql="", $parameters=[]): void
-    {
-        $log_file = "/tmp/sql.log";
-
-        file_put_contents($log_file, $sql, FILE_APPEND);
-        file_put_contents($log_file, print_r($parameters, true), FILE_APPEND);
     }
 }

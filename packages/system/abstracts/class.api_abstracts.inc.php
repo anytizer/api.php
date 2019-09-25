@@ -8,7 +8,7 @@ class APIUser
 {
     protected $user_id = "";
 
-    public function can($package="", $class="", $method=""): bool
+    public function can($package = "", $class = "", $method = ""): bool
     {
         $can = !false;
 
