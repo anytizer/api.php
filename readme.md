@@ -8,10 +8,10 @@ This is an example purpose __proof of concept__ work, and may not be instantly s
 However, you can expand it, add security features into it and use.
 
 This project will leave a very small footprint as your API Server script.
-In ~15 KB file size (including source code comments), you will get a lot of benefits.
+In ~20 KB file size (including source code comments), you will get a lot of features.
 
 
-## Benefits
+## Features
 
  * Handles GET/POST/PUT/PATCH etc. separately.
  * To add an API, just add a new method to the controller resource. Controller actions are dynamic.

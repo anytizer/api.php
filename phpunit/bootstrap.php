@@ -36,5 +36,5 @@ require_once("../classes/anytizer/class.relay.inc.php");
  * Without trailing slash /
  */
 #define("APIGATEWAY", "http://api.example.com:88");
-define("APIGATEWAY", "http://192.168.1.76/tutor/api.php/src");
-#define("APIGATEWAY", "http://localhost/angular/libraries/unittesting/api.php/api.php/src");
+define("APIGATEWAY", "http://192.168.1.76/tutor/api.php/public_html");
+#define("APIGATEWAY", "http://localhost/angular/libraries/unittesting/api.php/api.php/public_html");
