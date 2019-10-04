@@ -123,7 +123,7 @@ Results are calculated from the database server.
 * `/calendar/age/future/50`
 * `/calendar/age/future/-10`
 
-See [class.controller_age.inc.php](src/packages/calendar/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
+See [class.controller_age.inc.php](packages/calendar/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
 Any method name starting as get_, post_, put_ will serve as the `{method}` in your URL.
 Any class name inside controllers\\controller_* will serve as the `{resource}` in your URL.
 
