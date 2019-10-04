@@ -13,14 +13,14 @@ In ~20 KB file size (including source code comments), you will get a lot of feat
 
 ## Features
 
- * Handles GET/POST/PUT/PATCH etc. separately.
- * To add an API, just add a new method to the controller resource. Controller actions are dynamic.
- * Free from bulky third party libraries.
- * Separation of concerns (controllers, models, logging).
- * Useful in light-weight micro-services.
- * Uses PDO MySQL.
- * Has access logs.
- * Has event dispatchers.
+* Handles GET/POST/PUT/PATCH etc. separately.
+* To add an API, just add a new method to the controller resource. Controller actions are dynamic.
+* Free from bulky third party libraries.
+* Separation of concerns (controllers, models, logging).
+* Useful in light-weight micro-services.
+* Uses PDO MySQL.
+* Has access logs.
+* Has event dispatchers.
 
 
 ## Important Files
@@ -88,16 +88,16 @@ Upload everything in this project to root of your api gateway (subdomain).
 
 Setting up a virtual host is an optional activity.
 
- * Download this application somewhere you can manage virtual host.
- * Set `api.example.com 127.0.0.1` in `hosts` file.
- * If you installed in subdirectory, note your offset path correctly to reach /src/.
- * Rename `inc.settings-sample.php` to `inc.settings.php`.
- * Edit  your API's offset path.
- * Enter database connection details in [class.model_abstracts.inc.php](src/packages/system/abstracts/class.model_abstracts.inc.php).
- * In hosts file, add `127.0.0.1 api.example.com`
- * Copy [vhost-demo.conf](vhost-demo.conf) as vhost.conf and edit it.
- * In Apache's [httpd.conf](https://httpd.apache.org/docs/2.4/configuring.html), add: `Include PATH/vhost.conf`
- * Done!
+* Download this application somewhere you can manage virtual host.
+* Set `api.example.com 127.0.0.1` in `hosts` file.
+* If you installed in subdirectory, note your offset path correctly to reach /src/.
+* Rename `inc.settings-sample.php` to `inc.settings.php`.
+* Edit  your API's offset path.
+* Enter database connection details in [class.model_abstracts.inc.php](src/packages/system/abstracts/class.model_abstracts.inc.php).
+* In hosts file, add `127.0.0.1 api.example.com`
+* Copy [vhost-demo.conf](vhost-demo.conf) as vhost.conf and edit it.
+* In Apache's [httpd.conf](https://httpd.apache.org/docs/2.4/configuring.html), add: `Include PATH/vhost.conf`
+* Done!
 
 
 ## API Structure
@@ -112,16 +112,16 @@ All other parameters in $_GET, $_POST, $_SERVER headers remain unchanged. They a
 Following are the valid example purpose endpoints to test this application.
 Results are calculated from the database server.
 
- * `/auto/auto/index`
- * `/calendar/age/old`
- * `/calendar/age/old/8`
- * `/calendar/age/old/-8`
- * `/calendar/age/yesterday`
- * `/calendar/age/today`
- * `/calendar/age/tomorrow`
- * `/calendar/age/future`
- * `/calendar/age/future/50`
- * `/calendar/age/future/-10`
+* `/auto/auto/index`
+* `/calendar/age/old`
+* `/calendar/age/old/8`
+* `/calendar/age/old/-8`
+* `/calendar/age/yesterday`
+* `/calendar/age/today`
+* `/calendar/age/tomorrow`
+* `/calendar/age/future`
+* `/calendar/age/future/50`
+* `/calendar/age/future/-10`
 
 See [class.controller_age.inc.php](src/packages/calendar/controllers/class.controller_age.inc.php) on how __/age/__ APIs work.
 Any method name starting as get_, post_, put_ will serve as the `{method}` in your URL.
@@ -135,10 +135,10 @@ For an API like __{resource}/{method}/data...__, the program executures like:
 
 api-v1.php => controllers/controller_*{resource}*/:{http_verb}_*{method}*($data=array())
 
- * .htaccess __always__ redirects to `api-v1.php`.
- * It seeks for a valid controller resource.
- * It seeks for valid method in that controller.
- * Executes controller's method and outputs in JSON.
+* .htaccess __always__ redirects to `api-v1.php`.
+* It seeks for a valid controller resource.
+* It seeks for valid method in that controller.
+* Executes controller's method and outputs in JSON.
 
 
 ## Testing with cURL
@@ -150,31 +150,31 @@ Right after you install it correctly, the following `curl` endpoints will show d
 
 Ping api.example.com:88 to make sure you have successfully installed the api gateway subdomain.
 
- * `curl api.example.com:88/calendar/age/old`
- * `curl api.example.com:88/calendar/age/old/8`
- * `curl api.example.com:88/calendar/age/old/-8`
- * `curl api.example.com:88/calendar/age/yesterday`
- * `curl api.example.com:88/calendar/age/today`
- * `curl api.example.com:88/calendar/age/tomorrow`
- * `curl api.example.com:88/calendar/age/future`
- * `curl api.example.com:88/calendar/age/future/50`
- * `curl api.example.com:88/calendar/age/future/-10`
+* `curl api.example.com:88/calendar/age/old`
+* `curl api.example.com:88/calendar/age/old/8`
+* `curl api.example.com:88/calendar/age/old/-8`
+* `curl api.example.com:88/calendar/age/yesterday`
+* `curl api.example.com:88/calendar/age/today`
+* `curl api.example.com:88/calendar/age/tomorrow`
+* `curl api.example.com:88/calendar/age/future`
+* `curl api.example.com:88/calendar/age/future/50`
+* `curl api.example.com:88/calendar/age/future/-10`
 
 
- ### PHPUnit testing
+### PHPUnit testing
 
- PHPUnit can be used to test this API Server.
- It is included with the application.
- In the command line, change directory to the phpunit. And run `phpunit` command.
+PHPUnit can be used to test this API Server.
+It is included with the application.
+In the command line, change directory to the phpunit. And run `phpunit` command.
 
 
 ## DIY
 
- * __Server Script__: `api-v1.php` can be further chunked into settings, etc. But listed in full-body for educational purpose.
- * __Versioning__: Create a whole new set of applications and update .htaccess to point new API Processor.
- * __Access Logs__: beyond the scope, manage yourself
- * __Event Dispatching__: beyond the scope, manage yourself
- * __API Security__: beyond the scope, manage yourself
+* __Server Script__: `api-v1.php` can be further chunked into settings, etc. But listed in full-body for educational purpose.
+* __Versioning__: Create a whole new set of applications and update .htaccess to point new API Processor.
+* __Access Logs__: beyond the scope, manage yourself
+* __Event Dispatching__: beyond the scope, manage yourself
+* __API Security__: beyond the scope, manage yourself
 
 
 ## Independent APIs
