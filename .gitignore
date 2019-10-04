@@ -10,3 +10,4 @@
 /vendor/
 /vhost.conf
 /packages/inventory
+/composer.lock

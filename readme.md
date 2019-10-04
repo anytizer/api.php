@@ -78,8 +78,10 @@ Implementation of a real API is left to the users.
 ## Installation
 
 Upload everything in this project to root of your api gateway (subdomain).
+[PHP 7.1+](https://www.rosehosting.com/blog/how-to-install-php-7-3-on-ubuntu-16-04/) required.
 
     composer require anytizer/api.php:dev-master
+    chmod -R 777 logs/
 
 
 ### Configuration
