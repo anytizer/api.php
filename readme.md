@@ -25,8 +25,8 @@ In ~20 KB file size (including source code comments), you will get a lot of feat
 
 ## Important Files
 ```
-  |- src/.htaccess
-  |- src/api-v1.php
+  |- public_html/.htaccess
+  |- public_html/api-v1.php
   |- packages
     - system
 	  - abstracts
